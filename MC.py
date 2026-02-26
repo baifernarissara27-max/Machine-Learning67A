@@ -55,23 +55,28 @@ with st.sidebar:
     selected = option_menu('Prediction',
                            ['Ridingmower','Used_cars','BMI'])
     
-if selected== 'BMI':
+if selected == 'BMI':
     st.title('BMI Classification')
     
-    Gender = st.text_input('Gender')
+    Gender_select = st.selectbox('Gender', ['Male', 'Female'])
+    Gender = 0 if Gender_select == 'Male' else 1
+    
     Height = st.text_input('Height')
     Weight = st.text_input('Weight')
     BMI_prediction = ''
+    
     if st.button('Predict'):
-        Riding_prediction = bmi_model.predict([[
+        prediction_result = bmi_model.predict([[
             float(Gender),
             float(Height),
             float(Weight)
-            ]])
-        if BMI_prediction[0]==1:
+        ]])
+        
+        if prediction_result[0] == 1:
             BMI_prediction = 'Owner'
         else:
             BMI_prediction = 'Non Owner'
+            
     st.success(BMI_prediction)
     
 if selected== 'Ridingmower':
@@ -116,6 +121,7 @@ if selected == 'Used_cars':
         Price_predict = round(Price_predict[0],2)
 
     st.success(Price_predict)
+
 
 
 
