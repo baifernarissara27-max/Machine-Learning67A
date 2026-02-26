@@ -90,8 +90,6 @@ if selected == 'BMI':
             BMI_prediction = 'Extreme Obesity'
             
     st.success(BMI_prediction)
-            
-    st.success(BMI_prediction)
     
 if selected== 'Ridingmower':
     st.title('Riding Mower Classification')
@@ -135,6 +133,7 @@ if selected == 'Used_cars':
         Price_predict = round(Price_predict[0],2)
 
     st.success(Price_predict)
+
 
 
 
