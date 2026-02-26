@@ -65,7 +65,7 @@ if selected== 'BMI':
     if st.button('Predict'):
         Riding_prediction = bmi_model.predict([[
             float(Gender),
-            float(Height)
+            float(Height),
             float(Weight)
             ]])
         if BMI_prediction[0]==1:
@@ -116,6 +116,7 @@ if selected == 'Used_cars':
         Price_predict = round(Price_predict[0],2)
 
     st.success(Price_predict)
+
 
 
 
