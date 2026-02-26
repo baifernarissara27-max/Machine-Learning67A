@@ -59,6 +59,7 @@ if selected == 'BMI':
     st.title('BMI Classification')
     
     Gender_select = st.selectbox('Gender', ['Male', 'Female'])
+    # ปกติในชุดข้อมูล BMI: Male มักจะเป็น 0 และ Female เป็น 1
     Gender = 0 if Gender_select == 'Male' else 1
     
     Height = st.text_input('Height')
@@ -72,10 +73,23 @@ if selected == 'BMI':
             float(Weight)
         ]])
         
-        if prediction_result[0] == 1:
-            BMI_prediction = 'Owner'
-        else:
-            BMI_prediction = 'Non Owner'
+        # ปรับการแสดงผลตามค่า Index (0-5) จากชุดข้อมูล BMI ของคุณ
+        index_value = prediction_result[0]
+        
+        if index_value == 0:
+            BMI_prediction = 'Extremely Weak'
+        elif index_value == 1:
+            BMI_prediction = 'Weak'
+        elif index_value == 2:
+            BMI_prediction = 'Normal'
+        elif index_value == 3:
+            BMI_prediction = 'Overweight'
+        elif index_value == 4:
+            BMI_prediction = 'Obesity'
+        elif index_value == 5:
+            BMI_prediction = 'Extreme Obesity'
+            
+    st.success(BMI_prediction)
             
     st.success(BMI_prediction)
     
@@ -121,6 +135,7 @@ if selected == 'Used_cars':
         Price_predict = round(Price_predict[0],2)
 
     st.success(Price_predict)
+
 
 
 
